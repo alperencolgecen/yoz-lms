@@ -1,0 +1,6 @@
+@YOZ_LMS.Server_HostAddress = http://localhost:5223
+
+GET {{YOZ_LMS.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

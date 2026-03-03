@@ -1,0 +1,361 @@
+# .NET Core build outputs
+**/[Dd]ebug/
+**/[Dd]ebugPublic/
+**/[Rr]eleases/
+**/[Rr]eleases/
+**/[Rr]eleases*/
+**/[Rr]eleases*/
+**/x64/
+**/x86/
+**/[Bb]uild/
+**/[Bb]uild*/
+**/[Oo]bj/
+**/[Oo]bj/
+
+# Visual Studio 2015/2017 cache/options directory
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Mono auto generated files
+mono_crash.*
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Mac
+.DS_Store
+
+# Linux
+*~
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+# CodeRush
+.cr/
+
+# DotCover is an Opencover coverage tool
+*.dotCover
+
+# AxoCover is a Visual Studio add-in to create and manage coverage files
+.axoCover/*
+!.axoCover/settings.json
+
+# Coverlet is a free, cross platform Code Coverage Tool
+coverage*.json
+coverage*.xml
+coverage*.info
+
+# Visual Studio code coverage results
+*.coverage
+*.coveragexml
+
+# NCrunch
+_NCrunch_*
+.*crunch*.local.xml
+nCrunchTemp_*
+
+# MightyMoose
+*.mm.*
+AutoTest.Net/
+
+# Web workbench (sass)
+.sass-cache/
+
+# Installshield output folder
+[Ee]xpress/
+
+# DocProject is a documentation generator add-in
+DocProject/buildhelp/
+DocProject/Help/*.HxT
+DocProject/Help/*.HxC
+DocProject/Help/*.hhc
+DocProject/Help/*.hhk
+DocProject/Help/*.hhp
+DocProject/Help/Html2
+DocProject/Help/html
+
+# Click-Once directory
+publish/
+
+# Click-Once publishing settings
+*.pubxml
+*.pubxml.user
+*.pubxml.build
+*.publishproj
+
+# Publish Web Output
+*.[Pp]ublish.xml
+*.azurePubxml
+# Note: Comment the next line if you want to checkin your web deploy settings,
+# but database connection strings with passwords will be unencrypted
+*.pubxml
+*.pubxml.user
+*.pubxml.build
+*.publishproj
+
+# Microsoft Azure Web App publish settings. Comment the next line if you want to
+# checkin your Azure Web App publish settings, but sensitive information contained
+# in these files will be unencrypted
+PublishScripts/
+
+# NuGet Packages
+*.nupkg
+**/packages/*
+!**/packages/build/
+**/[Pp]roject[Pp]ackages/
+**/[Pp]roject[Pp]ackages.lock.json
+**/[Pp]roject[Pp]ackages.refresh
+
+# NuGet Symbol Packages
+*.snupkg
+
+# The tools folder
+tools/
+
+# Rider ignores .idea files
+.idea/
+
+# Data
+*.db
+*.sdf
+*.sdf-db
+*.mdf
+*.ldf
+*.ndf
+
+# Business Intelligence projects
+*.rdl.data
+*.bim.layout
+*.bim_*.settings
+*.rptproj.user
+
+# Microsoft Fakes
+FakesAssemblies/
+
+# GhostDoc plugin setting file
+*.GhostDoc.xml
+
+# Node.js Tools for Visual Studio
+.ntvs_analysis.dat
+node_modules/
+
+# Visual Studio 6 build log
+*.plg
+
+# Visual Studio 6 workspace options file
+*.opt
+
+# Visual Studio 6 auto-generated workspace file (contains which files were open etc.)
+*.vbw
+
+# Visual Studio LightSwitch build output
+**/*.HTMLClient/GeneratedArtifacts
+**/*.DesktopClient/GeneratedArtifacts
+**/*.DesktopClient/ModelManifest.xml
+**/*.Server/GeneratedArtifacts
+**/*.Server/ModelManifest.xml
+_Pvt_Extensions
+
+# Paket dependency manager
+.paket/paket.exe
+paket-files/
+
+# FAKE - F# Make
+.fake/
+
+# CodeRush personal settings
+.cr/personal
+
+# Python Tools for Visual Studio (PTVS)
+__pycache__/
+*.pyc
+
+# Cake - Uncomment if you are using it
+# tools/**
+# !tools/packages.config
+
+# Tabs Studio
+*.tss
+
+# Telerik's JustMock configuration file
+*.jmconfig
+
+# BizTalk build output
+*.btp.cs
+*.btm.cs
+*.odx.cs
+*.xsd.cs
+
+# OpenCover UI analysis results
+OpenCover/
+
+# Azure Stream Analytics local run output
+ASALocalRun/
+
+# MSBuild Binary and Structured Log
+*.binlog
+
+# NVidia Nsight GPU debugger configuration file
+*.nvuser
+
+# MFractors (Xamarin productivity tool) working folder
+.mfractor/
+
+# Local History for Visual Studio Code
+.history/
+
+# BeatPulse healthcheck temp database
+healthchecksdb
+
+# Backup folder for Package Reference Convert tool in Visual Studio 2017
+MigrationBackup/
+
+# Ionide (cross platform F# VS Code tools) working folder
+.ionide/
+
+# Fody - auto-generated XML schema
+FodyWeavers.xsd
+
+# Blazor
+**/bin/Debug/net*/wwwroot/_framework/
+**/obj/Debug/net*/wwwroot/_framework/
+
+# User secrets (contains sensitive data like API keys)
+**/appsettings.Development.json
+**/appsettings.Local.json
+**/secrets.json
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# API Keys and sensitive configuration
+**/appsettings.Production.json
+**/appsettings.Staging.json
+**/config/local.json
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# parcel-bundler cache (https://parceljs.org/)
+.cache
+.parcel-cache
+
+# next.js build output
+.next
+
+# nuxt.js build output
+.nuxt
+
+# vuepress build output
+.vuepress/dist
+
+# Serverless directories
+.serverless
+
+# FuseBox cache
+.fusebox/
+
+# DynamoDB Local files
+.dynamodb/
+
+# TernJS port file
+.tern-port
+
+# Stores VSCode versions used for testing VSCode extensions
+.vscode-test
+
+# Temporary folders
+tmp/
+temp/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Custom YOZ-LMS specific ignores
+**/private/
+**/confidential/
+**/credentials/
+**/keys/
+**/certificates/
+**/ssl/
+
+# 🔒 PREVENT OTHERS FROM RUNNING THE PROJECT
+**/YOZ-LMS.Server/Program.cs
+**/YOZ-LMS.Server/Controllers/
+**/YOZ-LMS.Server/appsettings.json
+**/YOZ-LMS.Shared/Services/
+**/YOZ-LMS.Shared/Models/
+**/YOZ-LMS.Server/wwwroot/index.html
+**/YOZ-LMS.Client/Pages/
+**/YOZ-LMS.Client/Program.cs
+**/YOZ-LMS.Client/wwwroot/index.html

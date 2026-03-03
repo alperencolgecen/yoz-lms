@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="YOZ-LMS.Client/YOZ-LMS.Client.csproj" />
+  <Project Path="YOZ-LMS.Server/YOZ-LMS.Server.csproj" />
+  <Project Path="YOZ-LMS.Shared/YOZ-LMS.Shared.csproj" />
+</Solution>
