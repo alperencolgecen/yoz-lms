@@ -1,0 +1,141 @@
+name: Bug Report
+description: File a bug report to help us improve
+title: "[BUG]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report! Please provide as much detail as possible.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: A clear and concise description of what the bug is.
+      placeholder: Tell us what happened!
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction Steps
+      description: Steps to reproduce the behavior.
+      placeholder: |
+        1. Go to '...'
+        2. Click on '....'
+        3. Scroll down to '....'
+        4. See error
+      render: markdown
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: A clear and concise description of what you expected to happen.
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual Behavior
+      description: A clear and concise description of what actually happened.
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots / Videos
+      description: Add screenshots or videos to help explain your problem.
+      placeholder: Drag and drop images here or click to attach
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      description: Which component is affected?
+      options:
+        - Backend API
+        - Frontend UI
+        - Gemini Integration
+        - Documentation
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      description: How severe is this bug?
+      options:
+        - Critical - Blocks usage
+        - High - Major functionality broken
+        - Medium - Some functionality affected
+        - Low - Minor issue
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: What version of YOZ-LMS are you using?
+      placeholder: e.g., v1.0.0
+    validations:
+      required: true
+
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Environment
+      description: Where are you running this?
+      options:
+        - Development
+        - Staging
+        - Production
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / Error Messages
+      description: Please copy and paste any relevant log output or error messages.
+      render: shell
+
+  - type: textarea
+    id: configuration
+    attributes:
+      label: Configuration
+      description: Any relevant configuration details (API versions, browser, OS, etc.).
+      placeholder: |
+        - OS: Windows 11
+        - Browser: Chrome 120
+        - .NET Version: 10.0
+        - API Version: Gemini Pro
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Add any other context about the problem here.
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Confirmation
+      description: Please confirm the following
+      options:
+        - label: I have searched existing issues for similar problems
+          required: true
+        - label: I have provided all the requested information
+          required: true
+        - label: This is not a security vulnerability (use security@yoz-lms.com for security issues)
+          required: true

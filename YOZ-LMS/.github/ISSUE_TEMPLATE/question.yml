@@ -1,0 +1,80 @@
+name: Question
+description: Ask a question about YOZ-LMS
+title: "[QUESTION]: "
+labels: ["question"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for your question! Please provide as much detail as possible so we can help you better.
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Your Question
+      description: What would you like to know?
+      placeholder: Ask your question here...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Question Category
+      description: What category does your question fall into?
+      options:
+        - Installation / Setup
+        - API Usage
+        - Frontend Development
+        - Backend Development
+        - Configuration
+        - Deployment
+        - General
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Please provide any relevant context about your question.
+      placeholder: What have you tried? What are you trying to accomplish?
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment Details
+      description: What's your development environment?
+      placeholder: |
+        - OS: Windows 11
+        - .NET Version: 10.0
+        - Browser: Chrome 120
+        - YOZ-LMS Version: v1.0.0
+
+  - type: textarea
+    id: code
+    attributes:
+      label: Code Example (if applicable)
+      description: Please provide any relevant code examples.
+      render: csharp
+
+  - type: textarea
+    id: error
+    attributes:
+      label: Error Messages (if applicable)
+      description: Please copy and paste any error messages.
+      render: shell
+
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Confirmation
+      description: Please confirm the following
+      options:
+        - label: I have searched existing issues and discussions for similar questions
+          required: true
+        - label: I have read the documentation
+          required: true
+        - label: I have provided enough information for my question to be answered
+          required: true

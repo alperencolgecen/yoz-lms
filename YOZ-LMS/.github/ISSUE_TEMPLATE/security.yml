@@ -1,0 +1,70 @@
+name: Security Issue
+description: Report a security vulnerability
+title: "[SECURITY]: "
+labels: ["security"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ⚠️ **IMPORTANT**: For security vulnerabilities, please email security@yoz-lms.com instead of using this template.
+        
+        This template is only for non-critical security concerns or general security questions.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Security Issue Description
+      description: Please describe the security issue in detail.
+      placeholder: Describe the security concern...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity Level
+      description: How severe is this security issue?
+      options:
+        - Critical - Immediate threat
+        - High - Significant risk
+        - Medium - Moderate risk
+        - Low - Minor risk
+    validations:
+      required: true
+
+  - type: textarea
+    id: impact
+    attributes:
+      label: Potential Impact
+      description: What could be the impact of this security issue?
+      placeholder: Describe the potential consequences...
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to Reproduce (if applicable)
+      description: How can this issue be reproduced?
+      placeholder: |
+        1. Go to '...'
+        2. Click on '....'
+        3. Observe security issue
+
+  - type: textarea
+    id: mitigation
+    attributes:
+      label: Suggested Mitigation
+      description: Do you have any suggestions for fixing this issue?
+      placeholder: Describe potential solutions...
+
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Security Reporting Confirmation
+      description: Please confirm the following
+      options:
+        - label: This is not a critical security vulnerability (critical issues should be emailed to security@yoz-lms.com)
+          required: true
+        - label: I have not disclosed this issue publicly
+          required: true
+        - label: I understand this report will be handled privately if needed
+          required: true
