@@ -17,7 +17,7 @@
 
 **Modern ASP.NET Core ve Google Gemini API ile güçlendirilmiş, çok dilli akıllı öğrenme yönetim sistemi**
 
-[🚀 Hızlı Başlangıç](#-hızlı-başlangıç) • [📖 Özellikler](#-özellikler) • [🛠 Kurulum](#-kurulum) • [📚 Dokümantasyon](#-dokümantasyon) • [🤝 Katkı](#-katkı-sağlama)
+[🚀 Hızlı Başlangıç](#-hızlı-başlangıç) • [📖 Özellikler](#-özellikler) • [🛠 Kurulum](#-kurulum) • [📚 Dokümantasyon](#-dokümantasyon) • [🤝 Katkı](#-katkı-sağlama) • [📋 Changelog](CHANGELOG.md)
 
 </div>
 
@@ -39,6 +39,9 @@ Eğitimde teknolojiyi kullanarak öğrenme deneyimini kişiselleştirmek ve herk
 - ⚡ **Gerçek Zamanlı:** Anlık içerik üretimi ve feedback
 - 🎨 **Modern UI:** Tailwind CSS ile responsive, kullanıcı dostu arayüz
 - 🔒 **Güvenli:** Enterprise-level güvenlik önlemleri
+- 🚀 **Yüksek Performans:** Optimized API ve caching ile hızlı yanıt
+- 📱 **Responsive:** Masaüstü, tablet ve mobil uyumlu tasarım
+- 🔄 **Gerçek Zamanlı:** SignalR ile canlı içerik güncellemeleri
 
 ---
 
@@ -55,6 +58,7 @@ Eğitimde teknolojiyi kullanarak öğrenme deneyimini kişiselleştirmek ve herk
 - **Çoklu Format:** Çoktan seçmeli,填空 ve essay soruları
 - **Anlık Feedback:** Anında cevap değerlendirme ve açıklamalar
 - **Performans Takibi:** Öğrenci progress analizi
+- **Adaptif Testler:** Öğrenci seviyesine göre zorluk ayarlama
 
 ### 🌍 Çok Dilli Destek
 ```
