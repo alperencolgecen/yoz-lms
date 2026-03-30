@@ -1,0 +1,295 @@
+@page "/"
+@using YOZ_LMS.Shared.Models
+@inject HttpClient Http
+
+<PageTitle>YOZ-LMS - Akıllı Öğrenme Yönetim Sistemi</PageTitle>
+
+<div class="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <section class="py-20 px-4">
+        <div class="max-w-6xl mx-auto text-center">
+            <h1 class="text-6xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
+                YOZ-LMS
+            </h1>
+            <p class="text-xl text-gray-600 mb-8">Akıllı Öğrenme Yönetim Sistemi</p>
+            
+            <div class="max-w-2xl mx-auto mb-8">
+                <div class="flex gap-2 p-2 bg-white rounded-2xl shadow-lg border border-gray-200">
+                    <input 
+                        class="flex-1 px-4 py-3 text-lg outline-none bg-transparent" 
+                        @bind="searchQuery" 
+                        placeholder="Ne öğrenmek istersiniz?"
+                    />
+                    <button 
+                        class="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-semibold hover:shadow-lg transition-all duration-200 flex items-center gap-2"
+                        @onclick="GenerateContent"
+                        disabled="isLoading"
+                    >
+                        @if (isLoading)
+                        {
+                            <div class="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                            <span>Öğreniliyor...</span>
+                        }
+                        else
+                        {
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                            <span>Öğren</span>
+                        }
+                    </button>
+                </div>
+            </div>
+            
+            <div class="flex justify-center gap-6 flex-wrap">
+                <div class="flex items-center gap-2 bg-white px-4 py-2 rounded-lg shadow">
+                    <label class="text-sm font-medium text-gray-700">Dil:</label>
+                    <select class="px-3 py-1 border border-gray-300 rounded-md outline-none focus:ring-2 focus:ring-blue-500" @bind="selectedLanguage">
+                        @foreach (var lang in supportedLanguages)
+                        {
+                            <option value="@lang">@lang</option>
+                        }
+                    </select>
+                </div>
+                
+                <div class="flex items-center gap-2 bg-white px-4 py-2 rounded-lg shadow">
+                    <label class="text-sm font-medium text-gray-700">Seviye:</label>
+                    <select class="px-3 py-1 border border-gray-300 rounded-md outline-none focus:ring-2 focus:ring-blue-500" @bind="selectedLevel">
+                        @foreach (var level in supportedLevels)
+                        {
+                            <option value="@level">@level</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    @if (isLoading)
+    {
+        <section class="py-12">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="inline-flex items-center gap-3 px-6 py-4 bg-white rounded-2xl shadow-lg">
+                    <div class="w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+                    <span class="text-lg font-medium text-gray-700">İçerik oluşturuluyor...</span>
+                </div>
+            </div>
+        </section>
+    }
+
+    @if (!string.IsNullOrEmpty(errorMessage))
+    {
+        <section class="py-12">
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-red-50 border border-red-200 rounded-2xl p-6">
+                    <div class="flex items-start gap-3">
+                        <div class="flex-shrink-0 w-6 h-6 text-red-600">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-lg font-semibold text-red-800 mb-1">Hata</h3>
+                            <p class="text-red-700">@errorMessage</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+
+    @if (learningResponse != null)
+    {
+        <section class="py-12 px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white rounded-2xl shadow-lg p-8 mb-6">
+                    <div class="flex items-start justify-between mb-4">
+                        <h2 class="text-3xl font-bold text-gray-900">@learningResponse.Results.Content.Header</h2>
+                        <div class="flex gap-2">
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">@learningResponse.Language</span>
+                            <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm font-medium">@learningResponse.Level</span>
+                        </div>
+                    </div>
+                    
+                    <div class="prose prose-lg max-w-none text-gray-700">
+                        @((MarkupString)learningResponse.Results.Content.Detail)
+                    </div>
+                </div>
+
+                @if (learningResponse.Results.Content.Questions?.Any() == true)
+                {
+                    <div class="bg-white rounded-2xl shadow-lg p-8">
+                        <h3 class="text-xl font-bold text-gray-900 mb-6">Test Soruları</h3>
+                        
+                        <div class="space-y-6">
+                            @foreach (var question in learningResponse.Results.Content.Questions)
+                            {
+                                <div class="border border-gray-200 rounded-xl p-6">
+                                    <p class="text-lg font-medium text-gray-900 mb-4">@question.Value.QuestionText</p>
+                                    
+                                    @if (!string.IsNullOrEmpty(question.Value.Answer))
+                                    {
+                                        <div class="space-y-3">
+                                            <input 
+                                                type="text" 
+                                                class="w-full px-4 py-2 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
+                                                @bind="questionAnswers[question.Key]" 
+                                                placeholder="Cevabınızı yazın..."
+                                            />
+                                            <button 
+                                                class="px-6 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors"
+                                                @onclick="() => CheckAnswer(question.Key, question.Value.Answer)"
+                                            >
+                                                Cevapla
+                                            </button>
+                                        </div>
+                                    }
+                                    else if (question.Value.Answers?.Any() == true)
+                                    {
+                                        <div class="space-y-3">
+                                            <div class="space-y-2">
+                                                @foreach (var answer in question.Value.Answers)
+                                                {
+                                                    <label class="flex items-center gap-3 p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
+                                                        <input 
+                                                            type="radio" 
+                                                            name="@question.Key" 
+                                                            value="@answer.Key" 
+                                                            class="w-4 h-4 text-blue-600"
+                                                            @onchange="() => questionAnswers[question.Key] = answer.Key" 
+                                                        />
+                                                        <span class="text-gray-700">@answer.Value</span>
+                                                    </label>
+                                                }
+                                            </div>
+                                            <button 
+                                                class="px-6 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors"
+                                                @onclick="() => CheckMultipleChoice(question.Key, question.Value.CorrectAnswer)"
+                                            >
+                                                Cevapla
+                                            </button>
+                                        </div>
+                                    }
+                                    
+                                    @if (feedbackMessages.ContainsKey(question.Key))
+                                    {
+                                        <div class="mt-4 p-4 rounded-lg @(feedbackMessages[question.Key].IsCorrect ? "bg-green-50 border border-green-200" : "bg-red-50 border border-red-200")">
+                                            <div class="flex items-start gap-2">
+                                                <div class="flex-shrink-0 w-5 h-5 @(feedbackMessages[question.Key].IsCorrect ? "text-green-600" : "text-red-600")">
+                                                    @(feedbackMessages[question.Key].IsCorrect ? "✓" : "✗")
+                                                </div>
+                                                <p class="@(feedbackMessages[question.Key].IsCorrect ? "text-green-800" : "text-red-800")">
+                                                    @feedbackMessages[question.Key].Message
+                                                </p>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+        </section>
+    }
+</div>
+
+@code {
+    private string searchQuery = "";
+    private string selectedLanguage = "Turkish";
+    private string selectedLevel = "Beginner";
+    private bool isLoading = false;
+    private string errorMessage = "";
+    private LearningResponse? learningResponse;
+    private Dictionary<string, string> questionAnswers = new();
+    private Dictionary<string, FeedbackInfo> feedbackMessages = new();
+
+    private List<string> supportedLanguages = new()
+    {
+        "Turkish", "English", "German", "French", "Spanish", "Italian",
+        "Portuguese", "Russian", "Japanese", "Korean", "Chinese", "Arabic",
+        "Hindi", "Greek", "Polish", "Swedish", "Norwegian", "Finnish", 
+        "Danish", "Dutch"
+    };
+
+    private List<string> supportedLevels = new() { "Beginner", "Intermediate", "Advanced", "Expert" };
+
+    private async Task GenerateContent()
+    {
+        if (string.IsNullOrWhiteSpace(searchQuery))
+        {
+            errorMessage = "Lütfen bir arama sorgusu girin.";
+            return;
+        }
+
+        isLoading = true;
+        errorMessage = "";
+        learningResponse = null;
+        questionAnswers.Clear();
+        feedbackMessages.Clear();
+
+        try
+        {
+            var request = new LearningRequest
+            {
+                Prompt = searchQuery,
+                Language = selectedLanguage,
+                Level = selectedLevel
+            };
+
+            var response = await Http.PostAsJsonAsync("/api/learning/generate", request);
+            
+            if (response.IsSuccessStatusCode)
+            {
+                learningResponse = await response.Content.ReadFromJsonAsync<LearningResponse>();
+                
+                if (learningResponse == null)
+                {
+                    errorMessage = "API'den geçerli yanıt alınamadı.";
+                }
+            }
+            else
+            {
+                var errorContent = await response.Content.ReadAsStringAsync();
+                errorMessage = $"API Hatası: {response.StatusCode} - {errorContent}";
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Hata: {ex.Message}";
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private void CheckAnswer(string questionKey, string correctAnswer)
+    {
+        var userAnswer = questionAnswers.GetValueOrDefault(questionKey, "");
+        var isCorrect = userAnswer.Trim().Equals(correctAnswer.Trim(), StringComparison.OrdinalIgnoreCase);
+
+        feedbackMessages[questionKey] = new FeedbackInfo
+        {
+            IsCorrect = isCorrect,
+            Message = isCorrect ? "✅ Doğru cevap! Mükemmel!" : $"❌ Yanlış cevap. Doğru cevap: {correctAnswer}"
+        };
+    }
+
+    private void CheckMultipleChoice(string questionKey, int correctAnswerIndex)
+    {
+        var userAnswer = questionAnswers.GetValueOrDefault(questionKey, "");
+        var isCorrect = int.TryParse(userAnswer, out var userIndex) && userIndex == correctAnswerIndex;
+
+        feedbackMessages[questionKey] = new FeedbackInfo
+        {
+            IsCorrect = isCorrect,
+            Message = isCorrect ? "✅ Doğru cevap! Mükemmel!" : $"❌ Yanlış cevap. Doğru cevap: {correctAnswerIndex}"
+        };
+    }
+
+    public class FeedbackInfo
+    {
+        public bool IsCorrect { get; set; }
+        public string Message { get; set; } = "";
+    }
+}
