@@ -349,13 +349,24 @@ Thumbs.db
 **/certificates/
 **/ssl/
 
-# 🔒 PREVENT OTHERS FROM RUNNING THE PROJECT
-**/YOZ-LMS.Server/Program.cs
-**/YOZ-LMS.Server/Controllers/
-**/YOZ-LMS.Server/appsettings.json
-**/YOZ-LMS.Shared/Services/
-**/YOZ-LMS.Shared/Models/
-**/YOZ-LMS.Server/wwwroot/index.html
-**/YOZ-LMS.Client/Pages/
-**/YOZ-LMS.Client/Program.cs
-**/YOZ-LMS.Client/wwwroot/index.html
+# JetBrains Rider
+*.sln.iml
+**/.idea/
+**/*.DotSettings.user
+
+# Visual Studio
+**/.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+**/[Ll]aunch[S]ettings.json
+
+# Node
+node_modules/
+
+# OS files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
