@@ -6,63 +6,63 @@ Modern ASP.NET Core ve Google Gemini API ile güçlendirilmiş, çok dilli akıl
 
 ---
 
-## Hakkinda
+## 📖 Hakkında
 
-YOZ-LMS, Google Gemini AI tarafindan desteklenen bir ogrenme yonetim sistemidir. Otomatik icerik uretimi, kisisellestirilmis ogrenme yollari ve gercek zamanli analiz sunar.
+YOZ-LMS, Google Gemini AI tarafından desteklenen bir öğrenme yönetim sistemidir. Otomatik içerik üretimi, kişiselleştirilmiş öğrenme yolları ve gerçek zamanlı analiz sunar.
 
-### Ozellikler
+### ✨ Özellikler
 
-- **AI Destekli Icerik Uretimi:** Gemini API ile otomatik ders materyali olusturma
-- **Cok Dilli Destek:** 20+ dil desteği
-- **Seviye Bazli:** 4 farkli ogrenme seviyesi (Beginner -> Expert)
-- **Akilli Test Sistemi:** Otomatik soru uretimi, coklu format, anlik feedback
-- **Modern UI:** Tailwind CSS ile responsive tasarim
-- **Gercek Zamanli:** SignalR ile canli icerik guncellemeleri
+- **AI Destekli İçerik Üretimi:** Gemini API ile otomatik ders materyali oluşturma
+- **Çok Dilli Destek:** 20+ dil desteği
+- **Seviye Bazlı:** 4 farklı öğrenme seviyesi (Beginner -> Expert)
+- **Akıllı Test Sistemi:** Otomatik soru üretimi, çoklu format, anlık feedback
+- **Modern UI:** Tailwind CSS ile responsive tasarım
+- **Gerçek Zamanlı:** SignalR ile canlı içerik güncellemeleri
 
 ---
 
-## Teknoloji Yigini
+## 🛠 Teknoloji Yığını
 
-### Backend
+### 🔧 Backend
 - ASP.NET Core 10.0
 - C# 10.0
 - Entity Framework Core
 - SignalR
 
-### Frontend
+### 🎨 Frontend
 - Blazor WebAssembly
 - Tailwind CSS
 - JavaScript ES6+
 
-### AI & API
+### 🤖 AI & API
 - Google Gemini API
 - RESTful API
 - JSON Serialization
 
-### Altyapi
+### 📦 Altyapı
 - Docker
 - Azure/AWS
 - GitHub Actions
 
 ---
 
-## Kurulum
+## ⚡ Kurulum
 
-### Gereksinimler
+### 📋 Gereksinimler
 - [.NET 10.0 SDK](https://dotnet.microsoft.com/download/dotnet/10.0)
 - [Visual Studio 2022](https://visualstudio.microsoft.com/) veya [VS Code](https://code.visualstudio.com/)
 - [Git](https://git-scm.com/)
 
-### Adimlar
+### 🚀 Adımlar
 
 ```bash
 # Repository'yi klonla
 git clone https://github.com/username/YOZ-LMS.git
 cd YOZ-LMS
 
-# API Key yapilandirmasi
-# Google AI Studio'dan ucretsiz API key al: https://makersuite.google.com/app/apikey
-# YOZ-LMS.Server/appsettings.json dosyasina ekle:
+# API Key yapılandırması
+# Google AI Studio'dan ücretsiz API key al: https://makersuite.google.com/app/apikey
+# YOZ-LMS.Server/appsettings.json dosyasına ekle:
 ```
 
 ```json
@@ -74,15 +74,15 @@ cd YOZ-LMS
 ```
 
 ```bash
-# Projeyi calistir
+# Projeyi çalıştır
 dotnet run --project YOZ-LMS.Server
-# Ayri terminalde:
+# Ayrı terminalde:
 dotnet run --project YOZ-LMS.Client
 ```
 
-Tarayicida ac: [http://localhost:5034](http://localhost:5034)
+Tarayıcıda aç: [http://localhost:5034](http://localhost:5034)
 
-### Build & Deploy
+### 📦 Build & Deploy
 
 ```bash
 # Solution build
@@ -98,7 +98,7 @@ docker run -p 80:80 yoz-lms
 
 ---
 
-## Proje Yapisi
+## 📂 Proje Yapısı
 
 ```
 YOZ-LMS/
@@ -118,16 +118,16 @@ YOZ-LMS/
   YOZ-LMS.slnx
 ```
 
-### API Endpoints
+### 🔌 API Endpoints
 
-| Method | Endpoint | Aciklama |
+| Method | Endpoint | Açıklama |
 |--------|----------|----------|
-| POST | `/api/learning/generate` | Icerik uretimi |
+| POST | `/api/learning/generate` | İçerik üretimi |
 | GET | `/api/learning/languages` | Desteklenen diller |
-| GET | `/api/learning/levels` | Ogrenme seviyeleri |
+| GET | `/api/learning/levels` | Öğrenme seviyeleri |
 | GET | `/health` | Health check |
 
-### API Kullanimi
+### 📝 API Kullanımı
 
 ```bash
 curl -X POST http://localhost:5223/api/learning/generate \
@@ -141,10 +141,10 @@ curl -X POST http://localhost:5223/api/learning/generate \
 
 ---
 
-## Lisans
+## 📄 Lisans
 
-Bu proje [Enhanced MIT License](LICENSE-ENHANCED.md) altinda dagitilmaktadir. Standart MIT lisansi DEGILDIR, ek ticari kullanim kisitlamalari icerir.
+Bu proje [Enhanced MIT License](LICENSE-ENHANCED.md) altında dağıtılmaktadır. Standart MIT lisansı DEĞİLDİR, ek ticari kullanım kısıtlamaları içerir.
 
 ---
 
-Prepared by Alperen Colgecen
+✍️ Prepared by Alperen Çölgeçen
