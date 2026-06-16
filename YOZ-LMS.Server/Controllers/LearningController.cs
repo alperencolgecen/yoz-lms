@@ -8,12 +8,12 @@ namespace YOZ_LMS.Server.Controllers;
 [Route("api/[controller]")]
 public class LearningController : ControllerBase
 {
-    private readonly IGeminiService _geminiService;
+    private readonly IOpenRouterService _openRouterService;
     private readonly ILogger<LearningController> _logger;
 
-    public LearningController(IGeminiService geminiService, ILogger<LearningController> logger)
+    public LearningController(IOpenRouterService openRouterService, ILogger<LearningController> logger)
     {
-        _geminiService = geminiService;
+        _openRouterService = openRouterService;
         _logger = logger;
     }
 
@@ -30,7 +30,7 @@ public class LearningController : ControllerBase
             _logger.LogInformation("Generating content for: {Prompt}, Language: {Language}, Level: {Level}", 
                 request.Prompt, request.Language, request.Level);
 
-            var response = await _geminiService.GenerateLearningContentAsync(request);
+            var response = await _openRouterService.GenerateLearningContentAsync(request);
             
             _logger.LogInformation("Successfully generated content for: {Prompt}", request.Prompt);
             

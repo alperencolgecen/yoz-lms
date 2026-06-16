@@ -18,8 +18,8 @@ builder.Services.AddCors(options =>
     });
 });
 
-// Register Gemini service
-builder.Services.AddHttpClient<IGeminiService, GeminiService>();
+// Register OpenRouter service
+builder.Services.AddHttpClient<IOpenRouterService, OpenRouterService>();
 builder.Services.AddMemoryCache();
 
 // Add configuration
